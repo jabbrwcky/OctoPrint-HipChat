@@ -2,20 +2,22 @@
 from __future__ import absolute_import
 import octoprint.plugin
 
+from hypchat import HypChat
+
 class HipchatPlugin(octoprint.plugin.StartupPlugin,
 					octoprint.plugin.SettingsPlugin,
 					octoprint.plugin.ProgressPlugin,
-					octoprint.plugin.EventHandlerPlugin
-                octoprint.plugin.AssetPlugin,
-                octoprint.plugin.TemplatePlugin):
+					octoprint.plugin.EventHandlerPlugin,
+					#octoprint.plugin.AssetPlugin,
+					octoprint.plugin.TemplatePlugin):
 
 	##~~ SettingsPlugin mixin
 
 	def get_settings_defaults(self):
 		return dict(
-			token="dqSRrbmGBMsFw4jvyUAaCtr1HQuast4JQBByGUkS",
-			room="testing",
-			api_url="https://jabbrwcky.hipchat.com"
+			token=None,
+			room=None,
+			api_url="https://api.hipchat.com"
 		)
 
 	##~~ AssetPlugin mixin
@@ -102,13 +104,13 @@ class HipchatPlugin(octoprint.plugin.StartupPlugin,
 		token = self._settings.get(["token"])
 		endpoint= self._settings.get(["api_url"])
 		room = self._settings.get(["room"])
-		self.hc = HypChat(token, endpoint=endpoint)
-		self.room = lambda: self.hc.get_room(room)
-		self._logger.info("Publishing to room %s via API endpoint %s" % (room, endpoint))
+		if token && room:
+			self.hc = HypChat(token, endpoint=endpoint)
+			self.room = lambda: self.hc.get_room(room)
+			self._logger.info("Publishing to room %s via API endpoint %s" % (room, endpoint))
+		else:
+			self.logger.warning("Token and/or Room not set! Not connecting to HipChat. Please configure API TOken and HipChat room in the plugin settings.")
 
-# If you want your plugin to be registered within OctoPrint under a different name than what you defined in setup.py
-# ("OctoPrint-PluginSkeleton"), you may define that here. Same goes for the other metadata derived from setup.py that
-# can be overwritten via __plugin_xyz__ control properties. See the documentation for that.
 __plugin_name__ = "Hipchat Plugin"
 
 def __plugin_load__():
