@@ -104,7 +104,7 @@ class HipchatPlugin(octoprint.plugin.StartupPlugin,
 		token = self._settings.get(["token"])
 		endpoint= self._settings.get(["api_url"])
 		room = self._settings.get(["room"])
-		if token && room:
+		if token and room:
 			self.hc = HypChat(token, endpoint=endpoint)
 			self.room = lambda: self.hc.get_room(room)
 			self._logger.info("Publishing to room %s via API endpoint %s" % (room, endpoint))
