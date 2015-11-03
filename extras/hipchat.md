@@ -3,41 +3,32 @@ layout: plugin
 
 id: hipchat
 title: OctoPrint-HipChat
-description: A plugin that reports Status and progress to a HipChat room
+description: A plugin that reports status and progress to a HipChat room
 author: Jens Hausherr
 license: MIT
 
-# TODO
-date: today's date in format YYYY-MM-DD, e.g. 2015-04-21
+date: 2015-11-01
 
 homepage: https://github.com/jabbrwcky/OctoPrint-HipChat
 source: https://github.com/jabbrwcky/OctoPrint-HipChat
 archive: https://github.com/jabbrwcky/OctoPrint-HipChat/archive/master.zip
 
-# TODO set this to true if your plugin uses the dependency_links setup parameter to include
-# library versions not yet published on PyPi. SHOULD ONLY BE USED IF THERE IS NO OTHER OPTION!
 follow_dependency_links: false
 
-# TODO
 tags:
-- a list
-- of tags
-- that apply
-- to your plugin
-- (take a look at the existing plugins for what makes sense here)
+- notification
 
 # TODO
-screenshots:
-- url: url of a screenshot
-  alt: alt-text of a screenshot
-  caption: caption of a screenshot
-- url: url of another screenshot
-  alt: alt-text of another screenshot
-  caption: caption of another screenshot
-- ...
+#screenshots:
+#- url: url of a screenshot
+#  alt: alt-text of a screenshot
+#  caption: caption of a screenshot
+#- url: url of another screenshot
+#  alt: alt-text of another screenshot
+#  caption: caption of another screenshot
+#- ...
 
-# TODO
-featuredimage: url of a featured image for your plugin
+#featuredimage: url of a featured image for your plugin
 
 compatibility:
   # list of compatible versions, for example 1.2.0. If left empty no specific version requirement will be assumed

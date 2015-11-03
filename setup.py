@@ -57,11 +57,12 @@ plugin_ignored_packages = []
 # Example:
 #     plugin_requires = ["someDependency==dev"]
 #     additional_setup_parameters = {"dependency_links": ["https://github.com/someUser/someRepo/archive/master.zip#egg=someDependency-dev"]}
-additional_setup_parameters = {}
+additional_setup_parameters = { "cmdclass": versioneer.get_cmdclass() }
 
 ########################################################################################################################
 
 from setuptools import setup
+import versioneer
 
 try:
 	import octoprint_setuptools
@@ -75,7 +76,7 @@ setup_parameters = octoprint_setuptools.create_plugin_setup_parameters(
 	identifier=plugin_identifier,
 	package=plugin_package,
 	name=plugin_name,
-	version=plugin_version,
+	version=versioneer.get_version(),
 	description=plugin_description,
 	author=plugin_author,
 	mail=plugin_author_email,
